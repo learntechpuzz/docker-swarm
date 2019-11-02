@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  reverseproxy:
+    image: learntechpuzz/reverseproxy
+    ports:
+      - 8080:8080
+
+  demoapp:
+    depends_on:
+      - reverseproxy
+    image: learntechpuzz/demoapp
+    ports:
+      - 80:80
+    deploy:
+      replicas: 2
